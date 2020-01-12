@@ -24,6 +24,9 @@ if(!empty($_POST['carro'])) {
 	//Verificação antes de efetuar a reserva
 	if ($reservas->verificarDisponibilidade($carro, $data_inicio, $data_fim)) {
 		$reservas->reservar($carro, $data_inicio, $data_fim, $pessoa);
+		//Após inserir a reserva, redireciona para a pag inicial
+		header("Location: index.php");
+		exit;
 	} else {
 		echo "Este carro já está alugado neste período.";
 	}
